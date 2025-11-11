@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ali Anarbek - Автошкола</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <!-- Видео фон -->
+    <video autoplay muted loop id="bg-video">
+        <source src="Video.mp4" type="video/mp4">
+    </video>
+
+    <header>
+        <nav>
+            <div class="brand">Ali Anarbek | Автошкола</div>
+            <div class="menu">
+                <a href="index.html">Главная</a>
+                <a href="products.html">Products</a>
+                <a href="index.html#courses">Курсы</a>
+                <a href="index.html#contacts">Контакты</a>
+                <a href="register.html" class="btn btn-outline">Регистрация</a>
+                <a href="login.html" class="btn btn-login">Вход</a>
+            </div>
+        </nav>
+    </header>
+
+
+    <section class="hero fade-in">
+        <h1>🚗 Добро пожаловать в автошколу!</h1>
+        <p>Научись уверенно водить, изучи ПДД и подготовься к экзамену вместе со мной</p>
+        <div class="btns">
+            <button class="btn btn-gradient" onclick="window.location.href='#courses'">Посмотреть курсы</button>
+            <button class="btn btn-outline">Подробнее</button>
+            <button class="btn btn-circle">➜</button>
+        </div>
+    </section>
+
+    <section class="about fade-in">
+        <h2>О нашей автошколе</h2>
+        <p>Мы обучаем водителей с нуля и до экзамена. Наша миссия — сделать обучение вождению доступным, понятным и интересным для каждого.</p>
+    </section>
+
+    <section id="courses" class="cards fade-in">
+        <div class="card">
+            <div class="emoji">📖</div>
+            <h3>Теория ПДД</h3>
+            <p>Изучи правила дорожного движения легко и доступно</p>
+        </div>
+        <div class="card">
+            <div class="emoji">🚘</div>
+            <h3>Вождение</h3>
+            <p>Практические занятия с инструктором</p>
+        </div>
+        <div class="card">
+            <div class="emoji">📝</div>
+            <h3>Подготовка к экзамену</h3>
+            <p>Тесты, материалы и консультации</p>
+        </div>
+    </section>
+
+    <section class="steps fade-in">
+        <h2>Этапы обучения</h2>
+        <ol>
+            <li>Теоретические занятия по ПДД</li>
+            <li>Практика на автодроме</li>
+            <li>Городские маршруты</li>
+            <li>Подготовка и пробные экзамены</li>
+            <li>Сдача экзамена в ГАИ</li>
+        </ol>
+    </section>
+
+    <section class="reasons fade-in">
+        <h2>Почему выбрать нашу автошколу?</h2>
+        <ul>
+            <li>Опытные инструкторы</li>
+            <li>Современные автомобили</li>
+            <li>Гибкий график занятий</li>
+            <li>Поддержка до экзамена</li>
+        </ul>
+    </section>
+
+    <section class="faq fade-in">
+        <h2>Часто задаваемые вопросы</h2>
+        <details>
+            <summary>Сколько длится обучение?</summary>
+            <p>В среднем курс длится от 2 до 3 месяцев, в зависимости от графика.</p>
+        </details>
+        <details>
+            <summary>Можно ли учиться вечером?</summary>
+            <p>Да, у нас есть вечерние и выходные группы.</p>
+        </details>
+        <details>
+            <summary>Какие документы нужны?</summary>
+            <p>Паспорт, медицинская справка и заявление.</p>
+        </details>
+    </section>
+
+    <section class="reviews fade-in">
+        <h2>Отзывы учеников</h2>
+        <div class="review-cards">
+            <div class="review">«Очень доступно объясняют, стало проще понимать ПДД!» <strong>- Асем</strong></div>
+            <div class="review">«Удобное расписание, хорошие машины 👍» <strong>- Нуржан</strong></div>
+            <div class="review">«Сдал экзамен с первого раза, спасибо!» <strong>- Динара</strong></div>
+        </div>
+    </section>
+
+    <footer id="contacts">
+        <p>📩 Свяжитесь со мной:</p>
+        <a href="https://instagram.com/" target="_blank">Instagram</a> |
+        <a href="mailto:example@mail.com">Email</a>
+    </footer>
+</body>
+
+</html>
