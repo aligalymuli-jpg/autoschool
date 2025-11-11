@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Регистрация — Автошкола Ali Anarbek</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="Video.mp4" type="video/mp4">
+    </video>
+
+    <header>
+        <nav>
+            <div class="brand">Ali Anarbek | Автошкола</div>
+            <div class="menu">
+                <a href="index.html">Главная</a>
+                <a href="products.html">Products</a>
+                <a href="index.html#courses">Курсы</a>
+                <a href="index.html#contacts">Контакты</a>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline">Регистрация</button>
+                    <button class="btn btn-login">Вход</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero fade-in">
+        <h1>📝 Регистрация нового пользователя</h1>
+        <p>Заполни форму ниже, чтобы начать обучение</p>
+    </section>
+
+    <section class="register-form fade-in">
+        <form id="registrationForm">
+            <h2>Регистрация</h2>
+            <label for="fullname">Полное имя:</label>
+            <input type="text" id="fullname" placeholder="Введите ваше имя" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Введите ваш email" required>
+
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" placeholder="Введите пароль" required>
+
+            <label for="confirm">Подтвердите пароль:</label>
+            <input type="password" id="confirm" placeholder="Повторите пароль" required>
+
+            <button type="submit" class="btn btn-gradient">Зарегистрироваться</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>📩 Свяжитесь со мной:</p>
+        <a href="https://instagram.com/" target="_blank">Instagram</a> |
+        <a href="mailto:example@mail.com">Email</a>
+    </footer>
+</body>
+
+</html>
