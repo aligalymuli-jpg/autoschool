@@ -1,4 +1,4 @@
-/* === Тёмная тема с сохранением дизайна === */
+/* === Тёмная тема с сохранением видео === */
 
 body {
     font-family: "Segoe UI", sans-serif;
@@ -22,12 +22,28 @@ body {
 }
 
 
-/* Прозрачность для блоков */
+/* Лёгкое затемнение видео для читаемости текста */
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 0;
+}
+
+
+/* Блоки поверх видео */
 
 header,
 footer,
 section {
     backdrop-filter: blur(6px);
+    position: relative;
+    z-index: 5;
 }
 
 
@@ -54,9 +70,6 @@ nav {
     color: #ff5722;
 }
 
-
-/* Меню — теперь все элементы в одной линии */
-
 .menu {
     display: flex;
     align-items: center;
@@ -75,46 +88,6 @@ nav {
 .menu a:hover {
     background: rgba(255, 87, 34, 0.3);
     color: #ff5722;
-}
-
-
-/* Кнопки как ссылки */
-
-.btn-outline {
-    border: 2px solid #2196f3;
-    color: #2196f3;
-}
-
-.btn-outline:hover {
-    background: #2196f3;
-    color: white;
-}
-
-.btn-login {
-    background: #ff5722;
-    color: white;
-}
-
-
-/* Главный блок */
-
-.hero {
-    text-align: center;
-    padding: 80px 20px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 0 0 40px 40px;
-    color: white;
-}
-
-.hero h1 {
-    font-size: 40px;
-}
-
-.btns {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
 }
 
 
@@ -138,6 +111,25 @@ nav {
     color: white;
 }
 
+.btn-gradient:hover {
+    opacity: 0.85;
+}
+
+.btn-outline {
+    border: 2px solid #2196f3;
+    color: #2196f3;
+}
+
+.btn-outline:hover {
+    background: #2196f3;
+    color: white;
+}
+
+.btn-login {
+    background: #ff5722;
+    color: white;
+}
+
 .btn-circle {
     width: 55px;
     height: 55px;
@@ -146,6 +138,28 @@ nav {
     color: #ff5722;
     font-size: 22px;
     border: 2px solid #ff5722;
+}
+
+
+/* Hero */
+
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 0 0 40px 40px;
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 
@@ -161,16 +175,22 @@ nav {
 }
 
 .card {
-    background: rgba(25, 25, 25, 0.8);
+    background: rgba(25, 25, 25, 0.55);
     padding: 30px;
     border-radius: 20px;
     text-align: center;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
     transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
 }
 
 .card h3 {
     color: #ff5722;
+    margin: 15px 0;
 }
 
 .card p {
@@ -182,7 +202,7 @@ nav {
 }
 
 
-/* Блоки */
+/* Блоки: about, steps, reasons, faq, reviews, register */
 
 .reasons,
 .reviews,
@@ -190,22 +210,21 @@ nav {
 .steps,
 .faq,
 .register-form {
-    background: rgba(25, 25, 25, 0.85);
+    background: rgba(25, 25, 25, 0.55);
     max-width: 950px;
     margin: 40px auto;
     padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 
-/* Регистрация */
+/* Форма регистрации */
 
 #registrationForm {
-    background: rgba(15, 15, 15, 0.85);
+    background: rgba(15, 15, 15, 0.55);
     padding: 35px;
     border-radius: 20px;
-    backdrop-filter: blur(6px);
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -224,7 +243,7 @@ nav {
 }
 
 
-/* Скрытый блок товаров */
+/* Скрытые товары */
 
 .hidden {
     display: none;
@@ -234,7 +253,7 @@ nav {
 /* Футер */
 
 footer {
-    background: rgba(10, 10, 10, 0.7);
+    background: rgba(10, 10, 10, 0.55);
     text-align: center;
     padding: 20px;
     margin-top: 60px;
@@ -245,44 +264,7 @@ footer a {
 }
 
 
-/* Видео на заднем плане */
-
-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -1;
-}
-
-
-/* Контент над видео */
-
-header,
-section,
-footer {
-    position: relative;
-    z-index: 5;
-}
-
-
-/* Затемнение фона */
-
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.55);
-    z-index: 0;
-}
-
-
-/* Анимация появления */
+/* Анимация fade-in */
 
 .fade-in {
     opacity: 0;
@@ -293,4 +275,49 @@ body::before {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+
+/* === Black Friday Banner === */
+
+.black-friday-banner {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #ff5722, #ff9800);
+    color: white;
+    padding: 30px 40px;
+    border-radius: 20px;
+    text-align: center;
+    z-index: 999;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    max-width: 90%;
+    opacity: 0;
+    pointer-events: none;
+    /* скрыт до появления */
+    transition: all 0.8s ease;
+}
+
+.black-friday-banner.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.black-friday-banner h2 {
+    margin: 0 0 15px 0;
+    font-size: 24px;
+}
+
+.black-friday-banner p {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+}
+
+.black-friday-banner #bf-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 18px;
 }
