@@ -10,10 +10,9 @@
 </head>
 
 <body>
-    <!-- Видео фон -->
     <video autoplay muted loop id="bg-video">
-        <source src="Video.mp4" type="video/mp4">
-    </video>
+    <source src="Video.mp4" type="video/mp4">
+</video>
 
     <header>
         <nav>
@@ -23,10 +22,8 @@
                 <a href="products.html">Products</a>
                 <a href="index.html#courses">Курсы</a>
                 <a href="index.html#contacts">Контакты</a>
-                <div class="auth-buttons">
-                    <button class="btn btn-outline">Регистрация</button>
-                    <button class="btn btn-login">Вход</button>
-                </div>
+                <a href="register.html" class="btn btn-outline">Регистрация</a>
+                <a href="login.html" class="btn btn-login">Вход</a>
             </div>
         </nav>
     </header>
@@ -36,7 +33,6 @@
         <p>Выберите подходящий пакет обучения для себя</p>
     </section>
 
-    <!-- Основные продукты -->
     <section class="cards fade-in" id="mainProducts">
         <div class="card">
             <h3>Базовый курс</h3>
@@ -70,12 +66,10 @@
         </div>
     </section>
 
-    <!-- Кнопка показать ещё -->
     <div style="text-align:center; margin:40px;">
         <button class="btn btn-gradient" id="showMoreBtn">Показать ещё</button>
     </div>
 
-    <!-- Дополнительные продукты -->
     <section class="cards hidden fade-in" id="extraProducts">
         <div class="card">
             <h3>Онлайн-курс ПДД</h3>
@@ -91,8 +85,7 @@
         </div>
     </section>
 
-    <!-- Корзина -->
-    <section class="cart" id="cart" style="background: rgba(30,30,30,0.8); padding:20px; margin:20px; border-radius:10px;">
+    <section class="cart fade-in" id="cart">
         <h2>Корзина</h2>
         <p>Корзина пуста</p>
     </section>
@@ -102,110 +95,6 @@
         <a href="https://instagram.com/" target="_blank">Instagram</a> |
         <a href="mailto:example@mail.com">Email</a>
     </footer>
-
-    <!-- JS -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Показать/скрыть дополнительные товары
-            const showMoreBtn = document.getElementById("showMoreBtn");
-            const extraProducts = document.getElementById("extraProducts");
-
-            showMoreBtn.addEventListener("click", () => {
-                extraProducts.classList.toggle("hidden");
-                showMoreBtn.textContent = extraProducts.classList.contains("hidden") ? "Показать ещё" : "Скрыть";
-            });
-
-            // Классы для корзины
-            class Product {
-                constructor(name, price) {
-                    this.name = name;
-                    this.price = price;
-                    this.quantity = 1;
-                }
-            }
-
-            class Cart {
-                constructor(selector) {
-                    this.items = [];
-                    this.cartEl = document.querySelector(selector);
-                }
-
-                add(product) {
-                    const exist = this.items.find(i => i.name === product.name);
-                    if (exist) exist.quantity++;
-                    else this.items.push(product);
-                    this.render();
-                }
-
-                remove(name) {
-                    this.items = this.items.filter(i => i.name !== name);
-                    this.render();
-                }
-
-                updateQuantity(name, qty) {
-                    const item = this.items.find(i => i.name === name);
-                    if (item) item.quantity = qty;
-                    this.render();
-                }
-
-                getTotal() {
-                    return this.items.reduce((sum, i) => sum + i.price * i.quantity, 0);
-                }
-
-                render() {
-                    this.cartEl.innerHTML = "<h2>Корзина</h2>";
-                    if (this.items.length === 0) {
-                        this.cartEl.innerHTML += "<p>Корзина пуста</p>";
-                        return;
-                    }
-
-                    this.items.forEach(item => {
-                        const div = document.createElement("div");
-                        div.style.display = "flex";
-                        div.style.justifyContent = "space-between";
-                        div.style.alignItems = "center";
-                        div.style.margin = "8px 0";
-
-                        div.innerHTML = `
-                            <span>${item.name} x${item.quantity} - ${item.price * item.quantity} ₸</span>
-                            <input type="number" min="1" value="${item.quantity}" style="width:50px;">
-                            <button style="background:#ff5722;color:white;border:none;padding:5px 10px;border-radius:5px;">Удалить</button>
-                        `;
-
-                        div.querySelector("input").addEventListener("change", e => {
-                            const val = parseInt(e.target.value);
-                            if (val > 0) this.updateQuantity(item.name, val);
-                        });
-
-                        div.querySelector("button").addEventListener("click", () => {
-                            this.remove(item.name);
-                        });
-
-                        this.cartEl.appendChild(div);
-                    });
-
-                    const totalDiv = document.createElement("div");
-                    totalDiv.style.marginTop = "10px";
-                    totalDiv.style.fontWeight = "bold";
-                    totalDiv.textContent = `Итого: ${this.getTotal()} ₸`;
-                    this.cartEl.appendChild(totalDiv);
-                }
-            }
-
-            const cart = new Cart("#cart");
-
-            // Кнопки "Купить"
-            document.querySelectorAll(".buy-btn").forEach(btn => {
-                btn.addEventListener("click", () => {
-                    const card = btn.closest(".card");
-                    const name = card.querySelector("h3").textContent;
-                    const price = parseInt(card.querySelector("strong").textContent.replace(/\D/g, ""));
-                    cart.add(new Product(name, price));
-                    alert(`${name} добавлен в корзину 🛒`);
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>
