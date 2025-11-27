@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // === Классы для корзины (OOP) ===
+    // === Классы для корзины ===
     class Product {
         constructor(name, price) {
             this.name = name;
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", () => {
             const card = btn.closest(".card");
             const name = card.querySelector("h3").textContent;
-            const priceText = card.querySelector("strong").textContent;
+            const priceText = card.querySelector("strong") ? card.querySelector("strong").textContent : "0";
             const price = parseInt(priceText.replace(/\D/g, ""));
             const product = new Product(name, price);
             cart.add(product);
@@ -133,4 +133,41 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
     fadeElements.forEach(el => observer.observe(el));
+
+    // === Black Friday Countdown Timer ===
+    const bfBanner = document.getElementById('blackFriday');
+    const bfTimer = document.getElementById('bf-timer');
+    const bfClose = document.getElementById('bf-close');
+
+    const bfEndDate = new Date('November 29, 2025 00:00:00').getTime();
+
+    function updateBFTimer() {
+        const now = new Date().getTime();
+        const distance = bfEndDate - now;
+
+        if (distance <= 0) {
+            bfTimer.textContent = "Акция закончилась";
+            clearInterval(bfInterval);
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        bfTimer.textContent = `${days}д ${hours}ч ${minutes}м ${seconds}с`;
+    }
+
+    window.addEventListener('load', () => {
+        bfBanner.classList.add('visible');
+        updateBFTimer();
+    });
+
+    const bfInterval = setInterval(updateBFTimer, 1000);
+
+    bfClose.addEventListener('click', () => {
+        bfBanner.classList.remove('visible');
+    });
+
 });
